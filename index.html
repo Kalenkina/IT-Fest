@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DataHub</title>
-
     <style>
         * {
             margin: 0;
@@ -210,6 +209,81 @@
         
         .news h2, p {
             color: #ffffff;
+        }
+        
+        @media (max-width: 960px) {
+            body {
+                padding: 10px;
+                gap: 20px;
+            }
+            .menu {
+                margin-left: 0;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+                font-size: 16px;
+            }
+            .content {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            .text-block {
+                max-width: 100%;
+                text-align: center;
+            }
+            .text-block h1 {
+                font-size: 32px;
+            }
+            .city-image {
+                width: 80%;
+            }
+            .outer-card {
+                max-height: none;
+                font-size: 16px;
+                text-align: center;
+            }
+            .univers {
+                flex-direction: column;
+                align-items: center;
+            }
+            .uni {
+                width: 90%;
+            }
+            .uni img {
+                height: auto;
+            }
+            .news {
+                width: 95%;
+            }
+            #chatbot {
+                width: 90%;
+                right: 5%;
+                bottom: 100px;
+                max-height: 60vh;
+            }
+            #chatbot-button {
+                width: 55px;
+                height: 55px;
+                font-size: 26px;
+            }
+            .neon-orange, .neon-purple {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .text-block h1 {
+                font-size: 26px;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            .menu {
+                font-size: 14px;
+                gap: 15px;
+            }
         }
     </style>
 </head>
