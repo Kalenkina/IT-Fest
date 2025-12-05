@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DataHub</title>
+
     <style>
         * {
             margin: 0;
@@ -179,6 +180,24 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
+
+        .uni-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #6a5af9, #8e6ff3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .uni-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
         
         .uni p {
             margin-top: 10px;
@@ -294,9 +313,9 @@
 
     <div class="menu">
         <a href="universitet.html">Университеты</a>
-        <a href="#">Приём</a>
-        <a href="#">Новости</a>
-        <a href="#">Востребованные специальности</a>
+        <a href="priem.html">Приём</a>
+        <a href="news.html">Новости</a>
+        <a href="vosspec.html">Востребованные специальности</a>
     </div>
 
     <div class="content">
@@ -319,21 +338,21 @@
             <img src="https://farabi.university/front/assets/img/icons/logonew1.png" alt="">
             <h3>Казахский Национальный Университет имени Аль-Фараби</h3>
             <p> Один из крупнейших вузов страны с широким спектром направлений: от гуманитарных до естественно-научных.</p>
-            <button>Подробнее</button>
+            <a href="farabi.html" class="uni-btn">Подробнее</a>
         </div>
 
         <div class="uni">
             <img src="https://enu.kz/_nuxt/logo.0ywpaMup.svg" alt="">
             <h3>Евразийский национальный университет имени Л.Н. Гумилева</h3>
             <p>Ведущий технический университет Казахстана, специализируется на инженерии и научных исследованиях.</p>
-            <button>Подробнее</button>
+            <a href="enu.html" class="uni-btn">Подробнее</a>
         </div>
 
         <div class="uni">
             <img src="https://upload.wikimedia.org/wikipedia/ru/8/8a/Satabayev_University_logo.png" alt="">
             <h3>Казахский национальный исследовательский технический университет</h3>
             <p>Университет, готовящий специалистов в области технологий, инженерии и прикладных наук.</p>
-            <button>Подробнее</button>
+            <a href="satbayev.html" class="uni-btn">Подробнее</a>
         </div>
     </div>
 
@@ -360,70 +379,28 @@
                 в числе которых - меморандум об открытии нового университета педагогического профиля в городе Астане.</p>
         </div>
 
-        <button>Ещё новости</button>
+        <a href="news.html" class="uni-btn">Больше новостей -></a>
     </div>
 
     <footer style="text-align: center; color: #ccc;">©2025 DataHub. Все права защищены.</footer>
     
-    <div id="chatbot-button" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #c900ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #000000;
-    font-size: 28px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 9999;
-    transition: transform 0.2s;">💬</div>
+    <div id="chatbot-button" style="position: fixed; bottom: 20px; right: 20px; width: 60px;
+    height: 60px; border-radius: 50%; background: #c900ff; display: flex; justify-content: center;
+    align-items: center; color: #000000; font-size: 28px; cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 9999; transition: transform 0.2s;">💬</div>
 
-    <div id="chatbot" style="
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 300px;
-    max-height: 400px;
-    color: #000000;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    font-family: Arial, sans-serif;
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 9998;
+    <div id="chatbot" style="position: fixed; bottom: 90px; right: 20px; width: 300px; max-height: 400px;
+    color: #000000; background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    font-family: Arial, sans-serif; display: none; flex-direction: column; overflow: hidden; z-index: 9998;
     animation: fadeIn 0.3s ease;">
-        <div id="chat-header" style="
-        background: #aa1af8;
-        color: #f7f6f6;
-        padding: 10px;
-        font-weight: bold;
-        cursor: pointer;">Ассистент DataHub</div>
-
-        <div id="chat-body" style="
-        padding: 10px;
-        flex: 1;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;">
+        <div id="chat-header" style="background: #aa1af8; color: #f7f6f6; padding: 10px; font-weight: bold; cursor: pointer;">Ассистент DataHub</div>
+        <div id="chat-body" style="padding: 10px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px;">
             <div id="chat-messages" style="font-size:14px;">
                 <div><strong>Бот:</strong> Привет! Чем могу помочь?</div>
             </div>
         </div>
         <input id="chat-input" type="text" placeholder="Напишите сообщение..." style="
-        border: none;
-        border-top: 1px solid #ffffff;
-        padding: 8px;
-        width: 100%;
-        box-sizing: border-box;
-        font-size: 14px;">
+        border: none; border-top: 1px solid #ffffff; padding: 8px; width: 100%; box-sizing: border-box;font-size: 14px;">
     </div>
 
     <style>
