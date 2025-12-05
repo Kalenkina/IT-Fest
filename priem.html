@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приём 2025 — DataHub ВУЗов РК</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", sans-serif;
+        }
+        
+        body {
+            background: #0e0e0f;
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        
+        .neon-orange {
+            position: fixed;
+            left: -150px;
+            top: 200px;
+            width: 350px;
+            height: 350px;
+            background: orange;
+            filter: blur(150px);
+            z-index: -1;
+        }
+        
+        .neon-purple {
+            position: fixed;
+            right: -150px;
+            top: 100px;
+            width: 450px;
+            height: 450px;
+            background: #c900ff;
+            filter: blur(180px);
+            z-index: -1;
+        }
+        
+        .menu {
+            display: flex;
+            gap: 35px;
+            font-size: 17px;
+            margin-bottom: 20px;
+            margin-left: 450px;
+            flex-wrap: wrap;
+        }
+        
+        .menu a {
+            color: #dcdcdc;
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+        }
+        
+        .menu a:hover {
+            color: white;
+        }
+        
+        .hero {
+            margin-top: 60px;
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 40px;
+            animation: fadeUp 0.7s ease;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 14px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            opacity: 0.85;
+        }
+        
+        .modal-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .close-btn {
+            align-self: flex-end;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .step {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .step.active {
+            display: flex;
+        }
+        
+        .step h2 {
+            text-align: center;
+        }
+        
+        button.next,
+        button.prev,
+        button.submit {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ff8800, #c400ff);
+            color: rgb(248, 248, 248);
+        }
+        
+        button.prev {
+            background: gray;
+        }
+        
+        .program {
+            color: #5b5b5b;
+        }
+        
+        .univer {
+            color: #5b5b5b;
+        }
+        
+        input[type=email],
+        input[type=file],
+        select {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 16px;
+        }
+        
+        .main-btn {
+            margin-top: 25px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, #ff8800, #c400ff);
+            border: none;
+            color: white;
+            border-radius: 14px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: .25s;
+            font-weight: 600;
+        }
+        
+        .main-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #c400ff88;
+        }
+        
+        .admission-grid {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 1100px;
+        }
+        
+        .ad-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 20px;
+            transition: .25s;
+            min-height: 150px;
+        }
+        
+        .ad-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        .ad-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+        
+        .ad-card p {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+        
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 650px) {
+            .hero h1 {
+                font-size: 34px;
+            }
+            .menu {
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+            }
+            .main-btn {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="neon-orange"></div>
+    <div class="neon-purple"></div>
+
+    <div class="menu">
+        <a href="index.html">Главная</a>
+        <a href="universitet.html">Университеты</a>
+        <a href="news.html">Новости</a>
+        <a href="vosspec.html">Востребованные специальности</a>
+    </div>
+
+    <section class="hero">
+        <h1>Приём 2025</h1>
+        <p>Поступление стало проще. Выбирай направление, подавай документы онлайн и следи за статусом заявки в личном кабинете.</p>
+        <button class="main-btn" id="openModal">Подать заявку</button>
+    </section>
+
+    <div class="modal-bg" id="modalBg">
+        <div class="modal">
+            <span class="close-btn" id="closeModal">&times;</span>
+
+            <div class="step active" data-step="1">
+                <h2>Шаг 1: Выберите направление</h2>
+                <select class="program" id="directionSelect">
+                <option value="">-- Выберите направление --</option>
+                <option value="IT">IT / Информационные технологии</option>
+                <option value="Экономика">Экономика</option>
+                <option value="Медицина">Медицина</option>
+                <option value="Гуманитарные науки">Гуманитарные науки</option>
+            </select>
+                <button class="next">Далее</button>
+            </div>
+
+            <div class="step" data-step="2">
+                <h2>Шаг 2: Выберите ВУЗ</h2>
+                <select class="univer" id="universitySelect">
+                <option value="">-- Выберите ВУЗ --</option>
+            </select>
+                <div style="display:flex; justify-content:space-between;">
+                    <button class="prev">Назад</button>
+                    <button class="next">Далее</button>
+                </div>
+            </div>
+
+            <div class="step" data-step="3">
+                <h2>Шаг 3: Загрузите документы</h2>
+                <input type="file" id="documents" multiple>
+                <button class="prev">Назад</button>
+                <button class="next">Далее</button>
+            </div>
+
+            <div class="step" data-step="4">
+                <h2>Шаг 4: Ваш e-mail для отслеживания</h2>
+                <input type="email" id="email" placeholder="example@mail.com">
+                <div style="display:flex; justify-content:space-between;">
+                    <button class="prev">Назад</button>
+                    <button class="submit">Отправить заявку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="admission-grid">
+        <div class="ad-card">
+            <h3>Шаг 1 — Выбери программу</h3>
+            <p>Посмотри направления и выбери путь, который подходит твоим интересам и целям.</p>
+        </div>
+
+        <div class="ad-card">
+            <h3>Шаг 2 — Подача документов</h3>
+            <p>Все документы подаются онлайн. Быстро, удобно и без очередей.</p>
+        </div>
+
+        <div class="ad-card">
+            <h3>Шаг 3 — Проверка статуса</h3>
+            <p>Следи за рассмотрением документов и результатами в личном кабинете.</p>
+        </div>
+
+        <div class="ad-card">
+            <h3>Гранты и квоты</h3>
+            <p>Узнай о государственных грантах, скидках и специальных предложениях.</p>
+        </div>
+
+        <div class="ad-card">
+            <h3>Поддержка абитуриентов</h3>
+            <p>Наши консультанты помогают с выбором и отвечают на любые вопросы 24/7.</p>
+        </div>
+    </div>
+
+    <script>
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modalBg = document.getElementById('modalBg');
+
+        openModalBtn.addEventListener('click', () => modalBg.style.display = 'flex');
+        closeModalBtn.addEventListener('click', () => {
+            modalBg.style.display = 'none';
+            currentStep = 1;
+            showStep(currentStep);
+        });
+        const universities = {
+            'IT': ['Международный университет информационных технологий', 'Инновационный университет информационных технологий'],
+            'Экономика': ['КазНУ', 'Российско-Казахстанский университет'],
+            'Медицина': ['Медицинский университет Алматы', 'Городской мед. колледж'],
+            'Гуманитарные науки': ['Гуманитарный университет', 'Лингвистический университет Алматы']
+        };
+        let currentStep = 1;
+        const steps = document.querySelectorAll('.step');
+
+        function showStep(n) {
+            steps.forEach(s => s.classList.remove('active'));
+            document.querySelector(`.step[data-step="${n}"]`).classList.add('active');
+        }
+
+        document.querySelectorAll('.next').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (currentStep === 1) {
+                    const dir = document.getElementById('directionSelect').value;
+                    const uniSelect = document.getElementById('universitySelect');
+                    uniSelect.innerHTML = '<option value="">-- Выберите ВУЗ --</option>';
+                    if (universities[dir]) universities[dir].forEach(u => {
+                        const opt = document.createElement('option');
+                        opt.value = u;
+                        opt.textContent = u;
+                        uniSelect.appendChild(opt);
+                    });
+                    if (!dir) {
+                        alert('Выберите направление');
+                        return;
+                    }
+                }
+                currentStep++;
+                showStep(currentStep);
+            });
+        });
+
+        document.querySelectorAll('.prev').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentStep--;
+                showStep(currentStep);
+            });
+        });
+
+        document.querySelector('.submit').addEventListener('click', () => {
+            const dir = document.getElementById('directionSelect').value;
+            const uni = document.getElementById('universitySelect').value;
+            const email = document.getElementById('email').value;
+            const docs = document.getElementById('documents').files;
+
+            if (!dir || !uni || !email || docs.length === 0) {
+                alert('Заполните все поля и загрузите документы');
+                return;
+            }
+
+            alert(`Заявка отправлена!\nНаправление: ${dir}\nВУЗ: ${uni}\nE-mail: ${email}\nДокументы: ${docs.length} файл(ов)`);
+            modalBg.style.display = 'none';
+            currentStep = 1;
+            showStep(currentStep);
+            document.getElementById('directionSelect').value = '';
+            document.getElementById('universitySelect').innerHTML = '<option value="">-- Выберите ВУЗ --</option>';
+            document.getElementById('email').value = '';
+            document.getElementById('documents').value = '';
+        });
+    </script>
+</body>
+
+</html>
