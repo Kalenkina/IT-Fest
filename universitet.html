@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список университетов</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: #0e0e0f;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 30px;
+            padding: 20px;
+            color: white;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 40px;
+            font-size: 18px;
+            color: #ddd;
+            margin-bottom: 40px;
+        }
+
+        .menu a {
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: white;
+        }
+
+        .neon-orange, .neon-purple {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            filter: blur(150px);
+            z-index: 0;
+        }
+
+        .neon-orange {
+            left: -150px;
+            top: 200px;
+            background: orange;
+        }
+
+        .neon-purple {
+            right: -150px;
+            top: 100px;
+            background: #c900ff;
+            width: 450px;
+            height: 450px;
+            filter: blur(180px);
+        }
+
+        h1 {
+            text-align: center;
+            margin: 30px 0;
+            font-weight: 600;
+        }
+
+        .container {
+            display: flex;
+            width: 900px;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .alphabet {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-shrink: 0;
+            height: 420px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        .alphabet::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .alphabet::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 10px;
+        }
+
+        .alphabet::-webkit-scrollbar-thumb:hover {
+            background: #777;
+        }
+
+        .alphabet button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 14px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.25s ease;
+        }
+
+        .alphabet button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(4px);
+        }
+
+        .alphabet button.active {
+            background: orange;
+            border-color: orange;
+        }
+
+        .universities {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            height: 420px;
+            overflow-y: auto;
+            padding-right: 6px;
+        }
+
+        .universities::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .universities::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 10px;
+        }
+
+        .universities::-webkit-scrollbar-thumb:hover {
+            background: #777;
+        }
+
+        .universities li {
+            list-style: none;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: 0.25s;
+        }
+
+        .universities li:hover {
+            color: #c900ff;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="neon-orange"></div>
+    <div class="neon-purple"></div>
+
+    <div class="menu">
+        <a href="index.html">Главная</a>
+        <a href="priem.html">Приём</a>
+        <a href="news.html">Новости</a>
+        <a href="vosspec.html">Востребованные специальности</a>
+    </div>
+
+    <h1>Список университетов/ВУЗ-ов</h1>
+
+    <div class="container">
+        <div class="alphabet">
+            <button data-letter="ALL" class="show-all">Показать все</button>
+            <button data-letter="А">А</button>
+            <button data-letter="Б">Б</button>
+            <button data-letter="В">В</button>
+            <button data-letter="Г">Г</button>
+            <button data-letter="Д">Д</button>
+            <button data-letter="Е">Е</button>
+            <button data-letter="Ж">Ж</button>
+            <button data-letter="З">З</button>
+            <button data-letter="И">И</button>
+            <button data-letter="К">К</button>
+            <button data-letter="Л">Л</button>
+            <button data-letter="М">М</button>
+            <button data-letter="Н">Н</button>
+            <button data-letter="О">О</button>
+            <button data-letter="П">П</button>
+            <button data-letter="Р">Р</button>
+            <button data-letter="С">С</button>
+            <button data-letter="Т">Т</button>
+            <button data-letter="У">У</button>
+            <button data-letter="Ф">Ф</button>
+            <button data-letter="Х">Х</button>
+            <button data-letter="Ц">Ц</button>
+            <button data-letter="Ч">Ч</button>
+            <button data-letter="Ш">Ш</button>
+            <button data-letter="Э">Э</button>
+            <button data-letter="Ю">Ю</button>
+            <button data-letter="Я">Я</button>
+        </div>
+
+        <ul class="universities">
+            <li data-letter="А">Алматинский университет</li>
+            <li data-letter="А">Актюбинский технологический университет</li>
+            <li data-letter="Б">Байконырский технический вуз</li>
+            <li data-letter="Б">Балхашский педагогический колледж</li>
+            <li data-letter="В">Восточно-Казахстанский университет</li>
+            <li data-letter="В">Всероссийский университет бизнеса (филиал)</li>
+            <li data-letter="Г">Гуманитарный университет</li>
+            <li data-letter="Г">Городской медицинский колледж Алматы</li>
+            <li data-letter="Д">Джамбулский университет</li>
+            <li data-letter="Д">Дипломатическая академия Казахстана</li>
+            <li data-letter="Е">Евразийский национальный университет имени Л. Гумилева (филиал)</li>
+            <li data-letter="Ж">Жезказганский университет</li>
+            <li data-letter="Ж">Жайсанский педагогический колледж</li>
+            <li data-letter="З">Зайсанский университет</li>
+            <li data-letter="З">Западно-Казахстанский педагогический колледж</li>
+            <li data-letter="И">Инновационный университет информационных технологий</li>
+            <li data-letter="И">Индустриальный университет Караганды</li>
+            <li data-letter="К">Казахский национальный университет имени Аль-Фараби</li>
+            <li data-letter="К">Карагандинский государственный университет</li>
+            <li data-letter="Л">Лицей-колледж международных отношений</li>
+            <li data-letter="Л">Лингвистический университет Алматы</li>
+            <li data-letter="М">Международный университет информационных технологий</li>
+            <li data-letter="М">Медицинский университет Алматы</li>
+            <li data-letter="Н">Назарбаев Университет</li>
+            <li data-letter="Н">Новосибирский филиал Казахского университета (условно)</li>
+            <li data-letter="О">Орал университет</li>
+            <li data-letter="О">Образовательный колледж Нур-Султана</li>
+            <li data-letter="П">Павлодарский университет</li>
+            <li data-letter="П">Политехнический колледж Алматы</li>
+            <li data-letter="Р">Российско-Казахстанский университет</li>
+            <li data-letter="Р">Республиканский колледж искусств</li>
+            <li data-letter="С">Семейский педагогический колледж</li>
+            <li data-letter="С">Сарыаркинский университет</li>
+            <li data-letter="Т">Таразский университет</li>
+            <li data-letter="Т">Технический университет Шымкента</li>
+            <li data-letter="У">Уральский государственный университет</li>
+            <li data-letter="У">Университет международных отношений Алматы</li>
+            <li data-letter="Ф">Фармацевтический колледж Алматы</li>
+            <li data-letter="Ф">Физико-технический университет Казахстана</li>
+            <li data-letter="Х">Химико-технологический колледж Алматы</li>
+            <li data-letter="Х">Хромтауский университет</li>
+            <li data-letter="Ц">Целиноградский педагогический колледж</li>
+            <li data-letter="Ц">Центр обучения бизнесу Алматы</li>
+            <li data-letter="Ч">Чимкентский университет</li>
+            <li data-letter="Ч">Человековедение и педагогика колледж</li>
+            <li data-letter="Ш">Шымкентский университет</li>
+            <li data-letter="Ш">Школа экономики Алматы (колледж)</li>
+            <li data-letter="Э">Экономический университет Алматы</li>
+            <li data-letter="Э">Энергетический колледж Караганды</li>
+            <li data-letter="Ю">Юридический университет Алматы</li>
+            <li data-letter="Ю">Южно-Казахстанский педагогический колледж</li>
+            <li data-letter="Я">Ясный университет</li>
+            <li data-letter="Я">Ярославский филиал Казахского университета (условно)</li>
+        </ul>
+    </div>
+
+    <script>
+    const buttons = document.querySelectorAll('.alphabet button');
+    const universities = document.querySelectorAll('.universities li');
+    
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const letter = btn.getAttribute('data-letter');
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+                
+            universities.forEach(uni => {
+                if (letter === "ALL") {
+                    uni.classList.remove('hidden');
+                } else {
+                    uni.classList.toggle('hidden', uni.getAttribute('data-letter') !== letter);
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
