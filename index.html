@@ -443,20 +443,20 @@
                 let botReply = "Извините, я пока не знаю, как на это ответить.";
                 const msg = userMessage.toLowerCase();
 
-                if (msg.includes('какой вуз лучше') || msg.includes('лучший вуз')) {
+                if (msg.includes('какой вуз лучше?') || msg.includes('лучший вуз')) {
                     botReply = "Для IT – IITU, для науки – NU, для классического образования – KazNU.";
-                } else if (msg.includes('какую профессию выбрать')) {
+                } else if (msg.includes('какую профессию выбрать?')) {
                     botReply = "Выбирайте профессию исходя из интересов: IT, медицина, экономика, инженерия, педагогика и т.д.";
-                } else if (msg.includes('it')) {
+                } else if (msg.includes('it университеты')) {
                     botReply = "Для IT рекомендую Международный университет информационных технологий (IITU) и Казахский национальный университет (KazNU).";
-                } else if (msg.includes('медицина')) {
+                } else if (msg.includes('медицинские университеты')) {
                     botReply = "Для медицины подходят медицинские университеты Алматы и Караганды.";
-                } else if (msg.includes('nu')) {
+                } else if (msg.includes('что такое nu?')) {
                     botReply = "Nazarbayev University – лидер в научной сфере и исследовательских проектах.";
                 } else if (msg.includes('Сравни универы Satbaev university и UIB')) {
                     botReply = "Если ты хочешь программировать, быть разработчиком, инженером, работать в IT‑индустрии — выбирай IITU. Там сильная техническая база, аккредитация, востребованные IT‑специальности.Если ты хочешь бизнес‑образование, управление, маркетинг, IT + бизнес, “смарт” решения, и, возможно, не хочешь уходит глубоко в программирование — UIB может быть более удачным выбором.";
                 }
-
+                
                 const botDiv = document.createElement('div');
                 botDiv.innerHTML = `<strong>Бот:</strong> ${botReply}`;
                 chatMessages.appendChild(botDiv);
@@ -468,3 +468,4 @@
     </script>
 </body>
 </html>
+
