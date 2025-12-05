@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Новости</title>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        <style>
+        :root{
+            --bg:#000000;
+            --glass: rgba(255,255,255,0.06);
+            --glass-2: rgba(255,255,255,0.09);
+            --accent1: #bb47ff;
+            --accent2: #c96bff;
+            --muted: rgba(255,255,255,0.75);
+        }
+        
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        
+        body{
+            margin:0;
+            font-family: "Inter", system-ui;
+            background: radial-gradient(1200px 600px at 10% 20%, rgba(201,107,255,0.08), transparent 8%),
+                radial-gradient(900px 450px at 90% 70%, rgba(255,179,71,0.06), transparent 6%),
+                var(--bg);
+            color:#fff;
+            padding:32px;
+            display:flex;
+            justify-content:center;
+        }
+
+        .wrap{
+            width:min(1200px, 96%);
+            display:flex;
+            flex-direction:column;
+            gap:28px;
+            position:relative;
+        }
+
+        .blob{
+            position:absolute;
+            pointer-events:none;
+            border-radius:50%;
+            filter:blur(120px);
+            mix-blend-mode:screen;
+            opacity:0.95;
+            z-index:0;
+        }
+        .blob--left{ width:420px;height:420px; left:-120px; top:120px; background:var(--accent1); }
+        .blob--right{ width:520px;height:520px; right:-140px; top:-40px; background:var(--accent2); }
+
+        header.top{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:16px;
+            z-index:5;
+        }
+        .brand{ display:flex; align-items:center; gap:12px; z-index:5;}
+        .logo{
+            width:54px;height:54px;border-radius:12px;
+            background:linear-gradient(135deg,#fff 0%, #fff0 100%);
+            display:flex;align-items:center;justify-content:center;color:#111;font-weight:800;
+            backdrop-filter: blur(6px);
+        }
+        .menu {
+            display: flex;
+            justify-content: flex-end;
+            gap: 40px;
+            font-size: 18px;
+            color: #ddd;
+            margin-bottom: 40px;
+            flex-shrink: 0;
+            z-index:5;
+        }
+
+        .menu a { color:#ddd; text-decoration:none; transition:.3s; }
+        .menu a:hover{ color:#fff }
+        
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            z-index: 5;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            background: var(--glass);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            transition: transform .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card img {
+            width: 160px;
+            height: 120px;
+            object-fit: cover;
+            border-right: 2px solid var(--glass-2);
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-content h3 {
+            margin: 0 0 8px;
+            font-family: "Playfair Display", serif;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .card-content p {
+            margin: 0;
+            font-size: 15px;
+            color: var(--muted);
+        }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="blob blob--left"></div>
+            <div class="blob blob--right"></div>
+
+            <div class="menu">
+                <a href="index.html">Главная</a>
+                <a href="universitet.html">Университеты</a>
+                <a href="priem.html">Приём</a>
+                <a href="vosspec.html">Востребованные специальности</a>
+            </div>
+
+            <main>
+                <div class="cards">
+                    <div class="card">
+                        <img src="https://static.tengrinews.kz/userdata/news/2025/news_586071/resize/photo_528493.jpg.webp" alt="Новость 1">
+                        <div class="card-content">
+                            <h3>В Казахстане могут отказаться от привычного ЕНТ</h3>
+                            <p>В Казахстане появится новый формат Единого национального тестирования (ЕНТ). Абитуриенты смогут выбирать, сдавать ли традиционный тест или новый, который будут признавать за рубежом, передаёт корреспондент Tengri Education.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://static.tengrinews.kz/userdata/news/2025/news_584541/resize/photo_526796.jpg.webp" alt="Новость 2">
+                        <div class="card-content">
+                            <h3>Токаев: Пять казахстанских университетов вошли в список лучших учебных заведений мира</h3>
+                            <p>Об этом сообщил Касым-Жомарт Токаев, выступая на Международном форуме стратегических партнеров "Казахстан – территория академических знаний". Президент отметил рост показателей отечественных вузов в престижных международных рейтингах.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://static.tengrinews.kz/userdata/u38/2025-11/resize/59442b68593de1e9e51ffe230e97c5c6.jpg" alt="Новость 3">
+                        <div class="card-content">
+                            <h3>Казахстанский Нархоз и британский Queen’s: программы двойного диплома</h3>
+                            <p>В Университет Нархоз с официальным визитом прибыла стратегическая команда руководства Queen’s University Belfast — одного из старейших и самых престижных университетов Великобритании и Северной Ирландии.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://static.tengrinews.kz/userdata/news/2025/news_582191/thumb_b/photo_524272.jpg.webp" alt="Новость 4">
+                        <div class="card-content">
+                            <h3>LG и КИМЭП заключили соглашение о сотрудничестве</h3>
+                            <p>Компания LG Electronics Almaty Kazakhstan и Университет КИМЭП сделали первый шаг к долгосрочному сотрудничеству, подписав официальный меморандум о партнерстве.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="https://static.tengrinews.kz/userdata/news/2025/news_582089/thumb_b/photo_524149.png.webp" alt="Новость 5">
+                        <div class="card-content">
+                            <h3>Токаев предложил создать в Казахстане университет ИИ</h3>
+                            <p>Президент Касым-Жомарт Токаев заявил о необходимости создания в стране специализированного исследовательского университета в области искусственного интеллекта, передаёт корреспондент Tengrinews.kz.</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
